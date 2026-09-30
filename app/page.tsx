@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import "./redesign.css";
 
 function Mark(){return <div className="mdMark"><span>MD</span><i/></div>}
 
