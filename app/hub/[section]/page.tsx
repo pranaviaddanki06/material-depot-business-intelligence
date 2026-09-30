@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import "../redesign.css";
 
 type Material={name:string;category:string;price:string;trend:string;demand:string;supplier:string;status:string};
 type Supplier={name:string;speciality:string;coverage:string;lead:string;rating:string;status:string};
