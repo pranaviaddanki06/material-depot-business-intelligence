@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type Material={name:string;category:string;price:string;trend:string;demand:string;supplier:string;status:string};
 type Supplier={name:string;speciality:string;coverage:string;lead:string;rating:string;status:string};
@@ -28,8 +28,8 @@ function Spark({kind="up"}){return <svg className="spark" viewBox="0 0 90 30"><p
 function Icon({s}:{s:string}){return <span className="navIcon">{s}</span>}
 
 export default function HubView(){
- const {section}=useParams<{section:string}>(); const router=useRouter();
- const current=String(section||"dashboard");
+ const pathname=usePathname(); const router=useRouter();
+ const current=pathname.split("/").filter(Boolean)[1]||"dashboard";
  const [theme,setTheme]=useState<"light"|"dark">("light");
  const [search,setSearch]=useState(""); const [period,setPeriod]=useState("6M");
  const [category,setCategory]=useState("All"); const [demand,setDemand]=useState("All");
