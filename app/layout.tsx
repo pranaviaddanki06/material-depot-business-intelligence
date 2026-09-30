@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-export const metadata: Metadata={title:"Material Depot Intelligence Hub",description:"Self-initiated business analytics case study for pricing, category, store and funnel decisions."};
-export default function RootLayout({children}:{children:ReactNode}){return <html lang="en"><body>{children}</body></html>}
+import "./workspace.css";
+
+export const metadata: Metadata = {
+  title: "Material Depot Intelligence Hub",
+  description: "Interactive business analytics workspace for pricing, category, store and funnel decisions."
+};
+
+export default function RootLayout({children}:{children:ReactNode}) {
+  return <html lang="en"><body>{children}</body></html>;
+}
