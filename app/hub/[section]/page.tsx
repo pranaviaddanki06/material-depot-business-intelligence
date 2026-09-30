@@ -26,6 +26,8 @@ const titleMap:Record<string,[string,string]>={dashboard:["Decision overview","A
 function Logo(){return <div className="hubLogo"><span>MD</span><i/></div>}
 function Spark({kind="up"}){return <svg className="spark" viewBox="0 0 90 30"><path d={kind==="down"?"M2 6 C18 9 25 23 39 18 S62 11 88 24":"M2 25 C16 22 22 18 34 20 S53 8 64 12 S77 6 88 2"} fill="none" stroke="currentColor" strokeWidth="2"/></svg>}
 function Icon({s}:{s:string}){return <span className="navIcon">{s}</span>}
+function PanelTitle({title,action,onClick}:{title:string;action?:string;onClick?:()=>void}){return <div className="panelTitle"><div><span>{title}</span></div>{action&&<button onClick={onClick}>{action} →</button>}</div>}
+function Insight({label,title,tone,onSave}:{label:string;title:string;tone:string;onSave:()=>void}){return <div className="insight"><span className={"tone "+tone}>{label}</span><p>{title}</p><button onClick={onSave} aria-label={"Save "+title}>♡</button></div>}
 
 export default function HubView(){
  const pathname=usePathname(); const router=useRouter();
