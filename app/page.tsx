@@ -3,30 +3,24 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-function Mark(){return <div className="mdMark"><span>MD</span><i/></div>}
+const stats=[["10K+","homes reached"],["1,000+","designers & architects"],["₹5M+","annualized revenue"],["01","decision layer"]];
 
 export default function Landing(){
- const router=useRouter(); const [entered,setEntered]=useState(false);
- const enter=()=>{setEntered(true);setTimeout(()=>router.push("/hub"),420)};
- return <main className={"landing "+(entered?"landingExit":"")}>
-  <div className="landingGrid"/>
-  <div className="landingTop"><div className="brandLockup"><Mark/><div><b>Material Depot</b><small>INTELLIGENCE HUB</small></div></div><span className="demoPill">PRIVATE PRODUCT PREVIEW · DEMO DATA</span></div>
-  <section className="landingHero">
-   <div className="landingCopy">
-    <span className="overline">BUSINESS INTELLIGENCE · HOME INTERIORS</span>
-    <h1>See the market.<br/><em>Decide with clarity.</em></h1>
-    <p>Material Depot Intelligence Hub brings pricing, materials, suppliers and commercial signals into one decision-ready workspace.</p>
-    <div className="landingCta"><button onClick={enter}>Enter Intelligence Hub <span>↗</span></button><span>Built for category, pricing &amp; retail decisions</span></div>
-   </div>
-   <div className="signalCanvas" aria-hidden="true">
-    <div className="signalHeader"><span>LIVE INTELLIGENCE VIEW</span><b>06.24</b></div>
-    <div className="signalMetric"><small>MARKET MOVEMENT</small><strong>+12.8%</strong><span>selected material index</span></div>
-    <svg viewBox="0 0 520 220" preserveAspectRatio="none"><path d="M0 180 C55 176 72 143 116 154 S175 185 214 137 S273 89 315 117 S371 164 408 91 S466 52 520 30" fill="none" stroke="currentColor" strokeWidth="2.2"/><path d="M0 180 C55 176 72 143 116 154 S175 185 214 137 S273 89 315 117 S371 164 408 91 S466 52 520 30 L520 220 L0 220Z" fill="currentColor" opacity=".08"/></svg>
-    <div className="signalLabels"><span>PRICE</span><span>DEMAND</span><span>SUPPLY</span></div>
-    <div className="floatingNode n1">Laminates <b>+8.4%</b></div><div className="floatingNode n2">Quartz <b>+4.1%</b></div><div className="floatingNode n3">12 signals <b>need review</b></div>
+ const router=useRouter(); const [busy,setBusy]=useState(false);
+ function enter(){setBusy(true);setTimeout(()=>router.push("/hub/dashboard"),280)}
+ return <main className="newLanding">
+  <nav className="landingNav"><div className="wordmark"><span className="wordmarkMark">MD</span><div><strong>material<span>depot</span></strong><small>INTELLIGENCE</small></div></div><div className="navCenter"><span>BUSINESS INTELLIGENCE</span><span>PRICING</span><span>MATERIALS</span><span>SUPPLIERS</span></div><div className="navRight"><span className="liveDot"/> PRIVATE PREVIEW <button onClick={enter}>{busy?"OPENING…":"OPEN HUB"} <b>↗</b></button></div></nav>
+  <section className="landingStage">
+   <div className="landingStatement"><p className="kicker">SELF-INITIATED BUSINESS ANALYTICS PRODUCT · BENGALURU</p><h1>Turn messy market signals into <i>clear decisions.</i></h1><p className="landingLead">A decision workspace designed around the questions category, pricing and retail leaders actually need to answer — not another dashboard full of charts.</p><div className="landingActions"><button className="solidCta" onClick={enter}>Enter Intelligence Hub <b>→</b></button><span>DEMO DATA · SIMULATED FOR CASE STUDY</span></div></div>
+   <div className="heroConsole">
+    <div className="consoleTop"><span><i className="statusLight"/> DECISION CONSOLE</span><span>LIVE MODEL · 06:24</span></div>
+    <div className="consoleHeadline"><div><small>COMMERCIAL SIGNAL</small><strong>Pricing pressure</strong><span>12 collections need review</span></div><div className="consoleScore"><b>82</b><small>signal strength</small></div></div>
+    <svg className="heroChart" viewBox="0 0 640 250" preserveAspectRatio="none"><defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#79a98b" stopOpacity=".3"/><stop offset="1" stopColor="#79a98b" stopOpacity="0"/></linearGradient></defs><path d="M0 205 C50 195 72 174 112 185 S175 213 216 157 S278 120 318 143 S368 181 414 91 S500 86 548 67 S610 38 640 24 L640 250 L0 250Z" fill="url(#area)"/><path d="M0 205 C50 195 72 174 112 185 S175 213 216 157 S278 120 318 143 S368 181 414 91 S500 86 548 67 S610 38 640 24" fill="none" stroke="#9bc4a9" strokeWidth="3"/></svg>
+    <div className="consoleRows"><div><span>PRICE INDEX</span><b>108.4</b><em>+8.4%</em></div><div><span>DEMAND</span><b>HIGH</b><em>+12.1%</em></div><div><span>MARGIN QUALITY</span><b>31.6%</b><em>+1.4pp</em></div></div>
    </div>
   </section>
-  <section className="landingProof"><div><b>01</b><span>Market intelligence</span><small>Competitive movement, trends and signals</small></div><div><b>02</b><span>Material intelligence</span><small>Products, pricing and demand context</small></div><div><b>03</b><span>Decision workspace</span><small>Insights that lead to measurable action</small></div></section>
-  <footer className="landingFooter"><span>Material Depot Intelligence Hub</span><span>Self-initiated product case study · Bengaluru</span></footer>
+  <section className="landingQuestions"><div><span>01</span><b>What should we change?</b><p>Price position, margin quality and competitor movement in one view.</p></div><div><span>02</span><b>Where is the leak?</b><p>Trace store and quote conversion from signal to likely cause.</p></div><div><span>03</span><b>What happens next?</b><p>Turn evidence into a testable action, owner and follow-up.</p></div></section>
+  <section className="landingStats">{stats.map(s=><div key={s[0]}><strong>{s[0]}</strong><span>{s[1]}</span></div>)}</section>
+  <footer className="landingFoot"><span>Material Depot Intelligence Hub</span><span>Business Analyst case study · Bengaluru · v2</span></footer>
  </main>
 }
